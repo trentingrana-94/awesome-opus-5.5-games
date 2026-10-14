@@ -68,3 +68,12 @@
 - Regenerate `profile/README.md` with `node scripts/generate-organization-profile.mjs` after changing the root README.
 - Push every completed commit to `origin`, `astra`, and `org-profile` (`https://github.com/AgentsLoop/.github.git`) before reporting completion.
 - Use the default `gh` account for read-only GitHub searches; do not specify an account or override `GH_TOKEN`. Inspect `~/.config/gh/hosts.yml` and `git remote -v` before remote writes. Use the intended account and ask if it is ambiguous.
+
+
+## Routine agent autonomy and release boundaries (2026-10-14)
+
+A user authorization for a concrete task already covers its ordinary preparation, read-only repository inspection, narrowly scoped non-destructive Git fetch/clean fast-forward, targeted validation, creation and publication of a **validated** same-branch task commit through the repository's accepted safe workflow, and a sanitized task report comment on the task's PR. Do not repeat conversational approval requests for each of these substeps. Record actions and verify the remote after publication; if a permission tool returns ASK or DENY, respect it and never hide the command in a nested shell.
+
+Minimize interactive prompts by using the existing tool-specific allowlist or safe wrapper. Do **not** grant blanket Bash/GitHub permission, automatic merge/deploy, irreversible deletion, force-push, secret access, privilege escalation, remote reconfiguration, or paid model calls. Preserve all existing tighter per-project, per-branch, owner-acceptance and host-level authorization rules.
+
+A release procedure that requires stopping OpenCode must execute from a genuinely independent external operator shell with verifiable process/synchronizer isolation. An OpenCode Build agent cannot certify or manufacture that isolation while executing. Return a factual BLOCKED report instead of bypassing the safety boundary. Never run `sync-branch-control-plane.mjs --ensure` after removing a branch control-plane declaration. No PR merge or canonical promotion without its separate explicit owner GO.
